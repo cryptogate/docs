@@ -1,6 +1,6 @@
 # API
 
-To use Cryptogate API you need to create account and use API key. You can find it on your profile page. Then send it as `X-Api-Key` header with every request.
+To use Cryptogate API you need to [create an account][1] and use API key. You can find it on your profile page. Then send it as `X-Api-Key` header with every request.
 
 The base URL for all requests is `https://cryptogate.io/api/v1/`.
 
@@ -49,8 +49,8 @@ curl -H "Accept: application/json" -H "Content-Type: application/json" -H "X-Api
 
 | Name                 | Type    | Description                                                                |
 |----------------------|---------|----------------------------------------------------------------------------|
-| amount               | Decimal | _Required_ Requested amount to be credited upon payment                    |
-| currency             | String  | _Required_ Which currency to use. Options: `btc`, `ltc`, `emc` and `dash`  |
+| amount               | Decimal | __Required.__ Requested amount to be credited upon payment                    |
+| currency             | String  | __Required.__ Which currency to use. Options: `btc`, `ltc`, `emc` and `dash`  |
 | confirmations_needed | Integer | How many confirmations needed before confirming payment                    |
 | merchant_order_id    | String  | Order ID, purchase ID etc.                                                 |
 | merchant_name        | String  | Your service name, shop title etc.                                         |
@@ -68,7 +68,9 @@ The signature is computed by concatenating the API key with an invoice `hashed_i
 So if your API key is *supersecret*, hashed_id is *1q2w3e*, amount is *1.2345* and currency is *dash*, string before hashing should look like this:
 
 ```bash
-supersecret_1q2w3e_12345_currency
+supersecret_1q2w3e_12345_dash
 ```
 
 Then hash it with SHA1 function and you will get validation hash.
+
+[1]: https://cryptogate.io/users/sign_up
