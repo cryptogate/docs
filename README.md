@@ -51,17 +51,17 @@ curl -H "Accept: application/json" -H "Content-Type: application/json" -H "X-Api
 
 ### Available parameters
 
-| Name                 | Type    | Description                                                                |
-|----------------------|---------|----------------------------------------------------------------------------|
+| Name                 | Type    | Description                                                                   |
+|----------------------|---------|-------------------------------------------------------------------------------|
 | amount               | Decimal | __Required.__ Requested amount to be credited upon payment                    |
 | currency             | String  | __Required.__ Which currency to use. Options: `btc`, `ltc`, `emc` and `dash`  |
-| confirmations_needed | Integer | How many confirmations needed before confirming payment                    |
-| merchant_order_id    | String  | Order ID, purchase ID etc.                                                 |
-| merchant_name        | String  | Your service name, shop title etc.                                         |
-| description          | String  | Purchase description                                                       |
-| callback_url         | String  | URL to which a callback should be sent when the invoice is paid            |
-| callback_params      | Array   | Additional parameters to include in callback                               |
-| success_url          | String  | URL to redirect customer after payment completes                           |
+| confirmations_needed | Integer | How many confirmations needed before confirming payment                       |
+| merchant_order_id    | String  | Order ID, purchase ID etc.                                                    |
+| merchant_name        | String  | Your service name, shop title etc.                                            |
+| description          | String  | Purchase description                                                          |
+| callback_url         | String  | URL to which a callback should be sent when the invoice is paid               |
+| callback_params      | Array   | Additional parameters to include in callback                                  |
+| success_url          | String  | URL to redirect customer after payment completes                              |
 
 ### Callback validation
 
@@ -76,6 +76,16 @@ supersecret_1q2w3e_12345_dash
 ```
 
 Then hash it with SHA1 function and you will get validation hash.
+
+```ruby
+validation_hash = Digest::SHA1.hexdigest('supersecret_1q2w3e_12345_dash')
+```
+
+or
+
+```php
+$validationHash = sha1('supersecret_1q2w3e_12345_dash');
+```
 
 [1]: https://cryptogate.io/users/sign_up
 
