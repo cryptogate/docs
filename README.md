@@ -8,16 +8,20 @@ Cryptogate API will respond with JSON payload. It expects parameters to be passe
 
 ## Creating invoice
 
+__URL:__ https://cryptogate.io/api/v1/invoices
+
+__Method:__ POST
+
 ### httpie example
 
 ```bash
-http POST https://cryptogate.io/api/v1/invoices X-Api-Key:YOUR_KEY amount=1.0009 currency=emc
+http POST https://cryptogate.io/api/v1/invoices X-Api-Key:YOUR_API_KEY amount=1.0009 currency=emc
 ```
 
 ### curl example
 
 ```bash
-curl -H "Accept: application/json" -H "Content-Type: application/json" -H "X-Api-Key: YOUR_KEY" -X POST -d '{"amount":1.0009,"currency":"emc"}' https://cryptogate.io/api/v1/invoices
+curl -H "Accept: application/json" -H "Content-Type: application/json" -H "X-Api-Key: YOUR_API_KEY" -X POST -d '{"amount":1.0009,"currency":"emc"}' https://cryptogate.io/api/v1/invoices
 ```
 
 ### Response example
@@ -74,3 +78,29 @@ supersecret_1q2w3e_12345_dash
 Then hash it with SHA1 function and you will get validation hash.
 
 [1]: https://cryptogate.io/users/sign_up
+
+## List invoices
+
+__URL:__ https://cryptogate.io/api/v1/invoices
+
+__Method:__ GET
+
+### httpie example
+
+```bash
+http https://cryptogate.io/api/v1/invoices X-Api-Key:YOUR_API_KEY
+```
+
+Results are paginated, so you can use `page` parameter.
+
+## View invoice
+
+__URL:__ https://cryptogate.io/api/v1/invoices/HASHED_ID
+
+__Method:__ GET
+
+### httpie example
+
+```bash
+http https://cryptogate.io/api/v1/invoices/1q2w3e X-Api-Key:YOUR_API_KEY
+```
