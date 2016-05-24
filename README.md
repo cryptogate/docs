@@ -67,7 +67,7 @@ curl -H "Accept: application/json" -H "Content-Type: application/json" -H "X-Api
 
 A `validation_hash` parameter is added to all callback requests. Its purpose is to authenticate the call from Cryptogate to the callback URL. This signature must be properly checked by the receiving server in order to ensure that the request is legitimate and hasn't been tampered with.
 
-The signature is computed by concatenating the API key with an invoice `hashed_id`, amount multiplyed by 10,000 and currency and applying a SHA1 hash function to it. You must use the following pattern: `"#{api_key}_#{hashed_id}_#{amount}_#{currency}"`
+The signature is computed by concatenating the API key with an invoice `hashed_id`, amount multiplyed by 10,000* and currency and applying a SHA1 hash function to it. You must use the following pattern: `"#{api_key}_#{hashed_id}_#{amount}_#{currency}"`
 
 So if your API key is *supersecret*, hashed_id is *1q2w3e*, amount is *1.2345* and currency is *dash*, string before hashing should look like this:
 
@@ -87,7 +87,7 @@ or
 $validationHash = sha1('supersecret_1q2w3e_12345_dash');
 ```
 
-[1]: https://cryptogate.io/users/sign_up
+* You need to multiply amount by 10,000 because Cryptogate allows maximum 4 digits after comma and you need your decimal to become integer. So 1.2345 becomes 12345, 10.0 becomes 100000 and so on.
 
 ## List invoices
 
@@ -118,3 +118,5 @@ __Method:__ GET
 ```bash
 http https://cryptogate.io/api/v1/invoices/1q2w3e X-Api-Key:YOUR_API_KEY
 ```
+
+[1]: https://cryptogate.io/users/sign_up
