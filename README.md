@@ -93,6 +93,10 @@ http https://cryptogate.io/api/v1/invoices X-Api-Key:YOUR_API_KEY
 
 Results are paginated, so you can use `page` parameter.
 
+```bash
+http https://cryptogate.io/api/v1/invoices X-Api-Key:YOUR_API_KEY page=2
+```
+
 ## View invoice
 
 __URL:__ https://cryptogate.io/api/v1/invoices/HASHED_ID
